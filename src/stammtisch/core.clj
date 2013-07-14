@@ -10,7 +10,10 @@
 
 (defn process-my-file [ ]
   (with-open [mio-file (clojure.java.io/reader "/home/catonano/Berlino/stammtisch/moby-dic.txt")]
-   (sort-by second > (reduce (partial merge-with +) (map frequencies-per-line (line-seq mio-file)))
+    (sort-by second >
+             (reduce
+              (partial merge-with +)
+              (map frequencies-per-line (line-seq mio-file)))
     )
   )
   )
@@ -21,7 +24,7 @@
   )
 
 
-(defn main* [ ]
+(defn main* []
 (print-it)
 )
 
@@ -50,3 +53,4 @@
  (sort-by second > (frequencies (mapcat words (lines)))
  )
  )
+
