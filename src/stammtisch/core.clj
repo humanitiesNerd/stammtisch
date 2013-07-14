@@ -4,19 +4,7 @@
   [criterium.core :as cr])
   )
 
-(defn frequencies-per-line [line ]
-  (frequencies (re-seq #"[a-z]+" line))
-  )
 
-(defn process-my-file [ ]
-  (with-open [mio-file (clojure.java.io/reader "/home/catonano/Berlino/stammtisch/moby-dic.txt")]
-    (sort-by second >
-             (reduce
-              (partial merge-with +)
-              (map frequencies-per-line (line-seq mio-file)))
-    )
-  )
-  )
 
 (defn print-it [ ]
   (let [to-be-printed (take 10 (process-my-file))]
@@ -40,17 +28,21 @@
 )
 
 
-(defn lines [ ]
-  (with-open [mio-file (clojure.java.io/reader "/home/catonano/Berlino/stammtisch/moby-dic.txt") ]
-    (line-seq mio-file))
-  )
+(defn lines [file-reader]
+    (line-seq file-reader)
+)
 
-(defn words [line]
+(defn words-per-line [line]
   (re-seq #"[a-z]+" line)
   )
 
-(defn process-my-file-improved [ ]
- (sort-by second > (frequencies (mapcat words (lines)))
+(defn process-my-file-improved [file-reader]
+ (sort-by second > (frequencies (mapcat words-per-line (lines file-reader)))
  )
  )
 
+(defn my-main []
+   (with-open [mio-file (clojure.java.io/reader "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt")]
+      (process-my-file-improved mio-file)
+   ) 
+)
