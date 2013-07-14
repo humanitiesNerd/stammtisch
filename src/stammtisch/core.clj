@@ -43,7 +43,7 @@
     ; The -b option does a benchmark. This implies head retention.
     ; There's no other way: we cannot reprocess standard input.
     ("-b" "--bench")
-      (cr/quick-bench (my-main path-to-file) :verbose)
-      (my-main path-to-file)
+      (cr/quick-bench (main* path-to-file) :verbose)
+      (main* path-to-file)
   )
 )
