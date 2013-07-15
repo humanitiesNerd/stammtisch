@@ -1,22 +1,27 @@
 (ns stammtisch.core
   (:gen-class)
+ 
   (:require clojure.java.io
   [criterium.core :as cr])
   )
 
-(defn lines [file-reader]
-    (line-seq file-reader)
+(defn lines-in-the-file [file-reader]
+   (line-seq file-reader)
 )
 
 (defn words-per-line [line]
   (re-seq #"[a-z]+" line)
   )
 
+(defn words [coll-of-lines]
+  (mapcat words-per-line coll-of-lines)
+)
+
 
 (defn process-my-file-improved [file-reader]
- (sort-by second > (frequencies (mapcat words-per-line (lines file-reader)))
+ (sort-by second > (frequencies (words (lines-in-the-file file-reader)))
  )
- )
+)
 
 
 ;(my-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt")
