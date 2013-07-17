@@ -7,11 +7,9 @@
 
 
 
-;(my-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt")
-;(-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt")
-; (-new-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "vanilla")
-;(-new-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "reducers")
-;(-new-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "meikel")
+; (-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "vanilla")
+;(-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "reducers")
+;(-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "meikel")
 
 (defn lines-in-the-file [file-reader]
    (line-seq file-reader)
@@ -80,7 +78,7 @@
 
 
 
-(defn -new-main [path-to-file version & args]
+(defn -main [path-to-file version & args]
    (let [benchmarking (first args)]
    (case version
       ("vanilla")

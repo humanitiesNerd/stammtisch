@@ -9,9 +9,6 @@
 )
 
 
-;(-new-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "meikel")
-;(def lines-in-the-file (iota/vec "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt"))
-
 ;(meikel-frequencies (words lines-in-the-file))
 
 
