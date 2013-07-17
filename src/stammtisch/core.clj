@@ -1,5 +1,6 @@
 (ns stammtisch.core
   (:gen-class)
+  (:use [stammtisch.meikel-version][stammtisch.common-functions])
   (:require clojure.java.io
   [criterium.core :as cr])
   )
@@ -16,17 +17,14 @@
    (line-seq file-reader)
 )
 
-(defn words-per-line [line]
-  (re-seq #"[a-z]+" line)
-  )
 
-(defn words [coll-of-lines]
+(defn vanilla-words [coll-of-lines]
   (mapcat words-per-line coll-of-lines)
 )
 
 
-(defn process-my-file-improved [file-reader]
- (sort-by second > (frequencies (words (lines-in-the-file file-reader)))
+(defn vanilla-process-my-file [file-reader]
+ (sort-by second > (frequencies (vanilla-words (lines-in-the-file file-reader)))
  )
 )
 
@@ -35,19 +33,18 @@
 
 (defn vanilla [path-to-the-file]
    (with-open [mio-file (clojure.java.io/reader path-to-the-file)]
-      (process-my-file-improved mio-file)
+      (vanilla-process-my-file mio-file)
    )
 )
 
 (defn meikel [path-to-the-file]
-   (with-open [mio-file (clojure.java.io/reader path-to-the-file)]
-      (process-my-file-improved mio-file)
-   )
+      ;(process-my-file-improved mio-file)
+      (meikel-process-my-file path-to-the-file)
 )
 
 (defn reducers [path-to-the-file]
    (with-open [mio-file (clojure.java.io/reader path-to-the-file)]
-      (process-my-file-improved mio-file)
+      (vanilla-process-my-file mio-file)
    )
 )
 
@@ -68,11 +65,6 @@
   )
 
 
-(defn print-it [path-to-file]
-  (let [to-be-printed (take 10 (vanilla path-to-file))]
-    (dorun (map #(println %) to-be-printed ))  )
-  )
-
 (defn main-vanilla* [path-to-file]
 (print-it-vanilla path-to-file)
 )
@@ -85,19 +77,8 @@
 (print-it-reducers path-to-file)
 )
 
-(defn main* [path-to-file]
-(print-it path-to-file)
-)
 
-(defn -main [path-to-file & args]
-  (case (first args)
-    ; The -b option does a benchmark. This implies head retention.
-    ; There's no other way: we cannot reprocess standard input.
-    ("-b" "--bench")
-      (cr/quick-bench (main* path-to-file) :verbose)
-      (main* path-to-file)
-  )
-)
+
 
 (defn -new-main [path-to-file version & args]
    (let [benchmarking (first args)]

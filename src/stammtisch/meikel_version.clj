@@ -3,21 +3,21 @@
          {vec iota-vec,
           subvec iota-subvec}]
         [clojure.core.reducers :as r
-         ]  )
+         ]  
+       [stammtisch.common-functions]
   )
+)
 
 
 ;(-new-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "meikel")
-(def lines-in-the-file (iota/vec "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt"))
+;(def lines-in-the-file (iota/vec "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt"))
 
 ;(meikel-frequencies (words lines-in-the-file))
 
 
-(defn words-per-line [line]
-  (re-seq #"[a-z]+" line)
-)
 
-(defn words [coll-of-lines]
+
+(defn meikel-words [coll-of-lines]
   (mapcat words-per-line
           (filter identity coll-of-lines)) )
 
@@ -32,4 +32,8 @@
   )
 )
 
-
+(defn meikel-process-my-file [path-to-the-file]
+ (let [lines-in-the-file (iota/vec "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt")]
+   (meikel-frequencies (meikel-words lines-in-the-file))
+ )
+)
