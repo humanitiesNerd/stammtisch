@@ -6,20 +6,20 @@
   )
 
 
-
-; (-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "vanilla")
-;(-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "reducers")
-;(-main "/home/catonano/Berlino/stammtisch/moby-dic-originale.txt" "meikel")
+; Usage:
+; load this namespace ( (use 'stammtisch.core) ) and then type either one of these lines
+; (-main "path/to/the/file.txt" "vanilla")
+; (-main "path/to/the/file.txt" "meikel")
+; (-main "path/to/the/file.txt" "vanilla" "-b")
+; (-main "path/to/the/file.txt" "meikel" "-b")
 
 (defn lines-in-the-file [file-reader]
    (line-seq file-reader)
 )
 
-
 (defn vanilla-words [coll-of-lines]
   (mapcat words-per-line coll-of-lines)
 )
-
 
 (defn vanilla-process-my-file [path-to-the-file]
  (with-open [mio-file (clojure.java.io/reader path-to-the-file)]
