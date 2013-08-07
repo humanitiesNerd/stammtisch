@@ -11,9 +11,6 @@
 
 ;(meikel-frequencies (words lines-in-the-file))
 
-
-
-
 (defn meikel-words [coll-of-lines]
   (mapcat words-per-line
           (filter identity coll-of-lines)) )
@@ -24,8 +21,8 @@
     (fn
       ([] {})
       ([a b] (merge-with + a b)))
-      (fn [words-occurrences-map word] (update-in words-occurrences-map [word] (fnil inc 0)))
-      coll
+    (fn [words-occurrences-map word] (update-in words-occurrences-map [word] (fnil inc 0)))
+    coll
   )
 )
 
