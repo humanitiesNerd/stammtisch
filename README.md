@@ -18,10 +18,10 @@ I called it "Meikel´s version" because [Meikel Brandmeier] (https://twitter.com
 
 Usage:
 load this namespace ( (use 'stammtisch.core) ) and then type either one of these lines
-(-main "path/to/the/file.txt" "vanilla")
-(-main "path/to/the/file.txt" "meikel")
-(-main "path/to/the/file.txt" "vanilla" "-b")
-(-main "path/to/the/file.txt" "meikel" "-b")
+* (-main "path/to/the/file.txt" "vanilla")
+* (-main "path/to/the/file.txt" "meikel")
+* (-main "path/to/the/file.txt" "vanilla" "-b")
+* (-main "path/to/the/file.txt" "meikel" "-b")
 
 Of course you can build a jar with lein and call that.
 
