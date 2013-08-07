@@ -12,7 +12,7 @@ Then the so called "Meikel´s version" based on the reducers library.
 
 I used [iota] (https://github.com/thebusby/iota#readme) to represent the file as a vector-like structure so that the reducers library can be used on it.
 
-I called it "Meikel´s version" because [Meikel Brandmeier] (https://twitter.com/kotarak) suggested me the right way to call fold on the clojure mailing list.
+I called it "Meikel´s version" because [Meikel Brandmeyer] (https://twitter.com/kotarak) suggested me the right way to call fold on the clojure mailing list.
 
 ## Usage
 
