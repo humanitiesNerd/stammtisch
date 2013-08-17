@@ -27,7 +27,7 @@
 )
 
 (defn meikel-process-my-file [path-to-the-file]
- (let [lines-in-the-file (iota/vec path-to-the-file)]
+ (let [lines-in-the-file (iota/seq path-to-the-file)]
    (sort-by second >(meikel-frequencies (meikel-words lines-in-the-file)))
  )
 )
