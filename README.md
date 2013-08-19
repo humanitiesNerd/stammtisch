@@ -2,6 +2,8 @@
 
 This is a words counter. It just reads a large text file and counts words in it. The file is supposed to be larger than the available ram on the machine it´s running on.
 
+Currently, the file I´m testing it with is [this one] (https://dl.dropboxusercontent.com/u/8311241/moby-dic.txt)
+
 This was an exercise for a meeting (in German: Stammtisch) about functional languages, held in Berlin in the winter of 2013 [this one] (http://www.meetup.com/thefunclub/events/104441382/).
 
 At august 2013, it counts words in 2 different ways.
