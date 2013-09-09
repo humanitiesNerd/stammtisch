@@ -8,10 +8,10 @@
 
 ; Usage:
 ; load this namespace ( (use 'stammtisch.core) ) and then type either one of these lines
-; (-main "path/to/the/file.txt" "vanilla")
-; (-main "path/to/the/file.txt" "meikel")
-; (-main "path/to/the/file.txt" "vanilla" "-b")
-; (-main "path/to/the/file.txt" "meikel" "-b")
+; (-main "moby-dic.txt" "vanilla")
+; (-main "moby-dic.txt" "meikel")
+; (-main "moby-dic.txt" "vanilla" "-b")
+; (-main "moby-dic.txt" "meikel" "-b")
 
 (defn lines-in-the-file [file-reader]
    (line-seq file-reader)
