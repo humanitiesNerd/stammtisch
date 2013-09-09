@@ -1,3 +1,11 @@
 # .travis.yml
+language: clojure
+lein: lein2
+jdk:
+  - openjdk7
 before_script:
   - wget https://dl.dropboxusercontent.com/u/8311241/moby-dic.txt
+script: lein run moby-dic.txt meikel
+branches:
+  only:
+    - travis
